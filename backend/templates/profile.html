@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profil utilisateur{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0" data-aos="flip-left">
+        <div class="card-body">
+          <h2 class="card-title mb-4 text-center">Mon profil</h2>
+          <div class="row mb-3">
+            <div class="col-md-4 text-center">
+              <img src="{% static 'assets/img/avatar.png' %}" alt="Avatar" class="rounded-circle shadow" width="120" data-aos="zoom-in">
+            </div>
+            <div class="col-md-8">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Nom d'utilisateur :</strong> {{ user.username }}</li>
+                <li class="list-group-item"><strong>Email :</strong> {{ user.email }}</li>
+                <li class="list-group-item"><strong>Date d'inscription :</strong> {{ user.date_joined|date:"d/m/Y" }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary me-2">Modifier le profil</a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger">Déconnexion</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

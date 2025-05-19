@@ -1,0 +1,43 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Lock - Crypto Exchange{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header class="bg-dark text-white py-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="{% url 'acceuil' %}" class="text-white text-decoration-none fs-3 fw-bold">Lock</a>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'dashboard' %}">Tableau de bord</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'market' %}">Marché</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'buy' %}">Acheter</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'sell' %}">Vendre</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'transactions' %}">Transactions</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'profile' %}">Profil</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{% url 'logout' %}">Déconnexion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    © 2025 Lock. Tous droits réservés.
+  </footer>
+
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from .models import Crypto
 
 # Create your views here.
 
@@ -41,3 +43,27 @@ def conditions_utilisation(request):
 
 def support_contact(request):
     return render(request, 'support_contact.html')
+
+def market(request):
+    cryptos = Crypto.objects.all()
+    return render(request, 'market.html', {'cryptos': cryptos})
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+
+def buy(request):
+    return render(request, 'buy.html')
+
+def sell(request):
+    return render(request, 'sell.html')
+
+def transactions(request):
+    return render(request, 'transactions.html')
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('connexion')  # Redirige vers la page de connexion après déconnexion

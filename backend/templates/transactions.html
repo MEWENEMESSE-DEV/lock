@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Historique des transactions{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4" data-aos="fade-down">Historique des transactions</h2>
+  <div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
+    <table class="table table-hover align-middle shadow rounded bg-white">
+      <thead class="table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Crypto</th>
+          <th>Montant</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if transactions %}
+          {% for tx in transactions %}
+          <tr data-aos="fade-left" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+            <td>{{ tx.date|date:"d/m/Y H:i" }}</td>
+            <td>
+              {% if tx.type == 'buy' %}
+                <span class="badge bg-success">Achat</span>
+              {% else %}
+                <span class="badge bg-danger">Vente</span>
+              {% endif %}
+            </td>
+            <td>{{ tx.crypto.name }} ({{ tx.crypto.symbol }})</td>
+            <td>{{ tx.amount }}</td>
+            <td>
+              <span class="badge bg-info">Validée</span>
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">Aucune transaction trouvée.</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

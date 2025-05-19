@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Vendre des cryptos{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4" data-aos="fade-right">Vendre une cryptomonnaie</h2>
+  <form method="post" data-aos="zoom-in" data-aos-delay="100" class="shadow p-4 rounded bg-white">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="crypto" class="form-label">Choisir la cryptomonnaie</label>
+      <select class="form-select" id="crypto" name="crypto" required>
+        <option value="">Sélectionner...</option>
+        {% for crypto in cryptos %}
+          <option value="{{ crypto.id }}">{{ crypto.name }} ({{ crypto.symbol }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Montant à vendre</label>
+      <input type="number" step="any" min="0" class="form-control" id="amount" name="amount" placeholder="Ex: 0.5" required>
+    </div>
+    <button type="submit" class="btn btn-danger w-100 fw-bold">Vendre</button>
+  </form>
+</div>
+{% endblock %}

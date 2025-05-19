@@ -15,4 +15,14 @@ urlpatterns = [
     path('conditions_utilisation/', views.conditions_utilisation, name='conditions_utilisation'),
     path('support_contact/', views.support_contact, name='support_contact'),
 
+
+    # Routes pour l'application crypto
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('market/', views.market, name='market'),
+    path('buy/', views.buy, name='buy'),
+    path('sell/', views.sell, name='sell'),
+    path('transactions/', views.transactions, name='transactions'),
+    path('profile/', views.profile, name='profile'),
+    path('logout/', views.logout_view, name='logout'),
+
 ]

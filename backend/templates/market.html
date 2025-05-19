@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Marché des cryptomonnaies</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Symbole</th>
+      <th>Prix (USD)</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for crypto in cryptos %}
+    <tr>
+      <td>{{ crypto.name }}</td>
+      <td>{{ crypto.symbol }}</td>
+      <td>{{ crypto.price_usd }}</td>
+      <td>
+        <a href="{% url 'buy' %}?crypto={{ crypto.id }}" class="btn btn-success btn-sm">Acheter</a>
+        <a href="{% url 'sell' %}?crypto={{ crypto.id }}" class="btn btn-danger btn-sm">Vendre</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

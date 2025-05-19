@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Acheter des cryptos{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Acheter une cryptomonnaie</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="crypto" class="form-label">Choisir la cryptomonnaie</label>
+      <select class="form-select" id="crypto" name="crypto" required>
+        <option value="">Sélectionner...</option>
+        {% for crypto in cryptos %}
+          <option value="{{ crypto.id }}">{{ crypto.name }} ({{ crypto.symbol }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Montant à acheter</label>
+      <input type="number" step="any" min="0" class="form-control" id="amount" name="amount" placeholder="Ex: 0.5" required>
+    </div>
+    <button type="submit" class="btn btn-success">Acheter</button>
+  </form>
+</div>
+{% endblock %}
